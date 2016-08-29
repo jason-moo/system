@@ -1,0 +1,9 @@
+	<div style="margin:-90px 0 0 -150px;padding-top:30px;width:300px;height:180px;position:absolute;top:50%;left:50%;text-align:center;background: rgba(0,0,255,0.6);font-size:18px">
+		<p>账号：<input type="text;"/></p>
+		<p>密码：<input type="password;"/></p>
+		<input type="button" value='提交'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value='取消'>
+	</div>	  <div style="margin:auto">
+	账号：<input type="text"/>
+	密码：<input type="password /">
+	<input type="button" value='提交'>
+</div>

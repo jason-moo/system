@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	 xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/mvc
+		 http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+    <context:component-scan base-package="com.crm.web.controller*"  use-default-filters="false"  >
+	    <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	    <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+	</context:component-scan>
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
+	<mvc:annotation-driven
+			content-negotiation-manager="contentNegotiationManager" />
+	<bean id="contentNegotiationManager"
+		class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+		<!-- Turn off working out content type based on URL file extension, should 
+			fall back to looking at the Accept headers -->
+		<property name="favorPathExtension" value="false" />
+	</bean>
+	<!--velocity视图解析器 -->
+   	<bean
+		class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver"
+		id="velocityViewResolver">
+        <property name="cache" value="true"/>
+        <property name="prefix" value="/"/>
+        <property name="suffix" value=".vm"/>
+   		<property name="exposeSpringMacroHelpers">
+			<value>true</value>
+		</property>
+        <property name="requestContextAttribute">
+			<value>rc</value>
+		</property>
+		<property name="allowRequestOverride" value="true"></property>
+		 <property name="exposeSessionAttributes" value="true" />
+		<property name="exposeRequestAttributes" value="true" />
+		<property name="contentType" value="text/html;charset=UTF-8" />
+    	<property name="layoutUrl" value="layout/global_layout.vm"/>
+    	<property name="toolboxConfigLocation">
+			<value>WEB-INF/views/tools.xml</value>
+		</property>
+    </bean>
+    <bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+        <property name="configLocation" value="classpath:velocity.properties"/>
+        <property name="resourceLoaderPath" value="/WEB-INF/views/vm/"/>
+    </bean>
+    
+     <bean id="exceptionResolver" class="me.gacl.exception.BaseExceptionResolver"></bean>
+    
+    <!-- 公共资源配置地址 说明 -->
+	<mvc:resources mapping="/js/**" location="/js/" />
+	<mvc:resources mapping="/css/**" location="/css/" />
+	<mvc:resources mapping="/images/**" location="/images/" />
+</beans>

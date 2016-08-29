@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration >
+	<classPathEntry location="E:\repository\mysql\mysql-connector-java\5.1.34\mysql-connector-java-5.1.34.jar" />
+	<context id="MySqlTables" defaultModelType="flat" targetRuntime="MyBatis3">
+		<property name="javaFileEncoding" value="utf-8"/>
+		<plugin type="com.crm.web.plugin.Pagination" />
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />    
+		<!-- 连接属性 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/olympus" userId="root" password="7356241">
+		</jdbcConnection>
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		
+		<!-- java pojo文件生成目录，以及生产的类文件包名 -->
+		<javaModelGenerator targetPackage="me.gacl.domain"
+			targetProject="system-domain/src/main/java" >
+			<property name="enableSubPackages" value="true" /> 
+			<property name="" value=""/>
+		</javaModelGenerator>
+	
+		<!-- mapper xml文件生成目录 -->
+		<sqlMapGenerator targetPackage="com.crm.dao.mapper" targetProject="system-dao/src/main/resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		
+		<!-- Mapper接口文件生成目录 -->
+		<javaClientGenerator type="XMLMAPPER" 
+			targetPackage="com.crm.dao.mapper" targetProject="system-dao/src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		
+		<!--  需要生成的表需要在下面配置  -->
+		<!--  generateExt表示是否生成Ext类和ExtMapper  ， 一般在生成新表时让该字段为true ，以后都让其为false，避免覆盖 -->
+		<!--  如果表的id是自增长的，那么加上<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID() as id"  type="post" identity="true"/> 否则不用加 -->
+		
+    	<table schema="c_user" tableName="c_user">
+			<property name="useActualColumnNames" value="false" />
+			<property name="generateExt" value="false" />
+			<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID() as id"  type="post" identity="true"/>
+		</table>
+		</context>
+</generatorConfiguration>
