@@ -23,6 +23,7 @@ public class IndexController {
 	
 	@RequestMapping(value="/")
 	public String Index(){
+		
 		RedisAtomicLong redisAtomicLong = new RedisAtomicLong("idgenerator",systemTempleService.getFactory());
 		System.out.println(redisAtomicLong.addAndGet(1));
 		return "index";
