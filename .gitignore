@@ -3,7 +3,8 @@
 *.jar
 *.war
 *.ear
-/target
+/target/
 /.settings
 /.classpath
 /.project
+pom.properties
