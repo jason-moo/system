@@ -1,0 +1,10 @@
+	<style type="text/css">
+		p label {margin-left:35px;}
+	</style>
+	<div style="margin:-125px 0 0 -225px;padding-top:30px;width:450px;height:250px;position:absolute;top:50%;left:50%;text-align:center;background: rgba(0,0,255,0.6);font-size:18px">
+		<p><label>账号：</label><input type="text"/></p>
+		<p><label>手机：</label><input type="text"/></p>
+		<p><label>密码：</label><input type="password"/></p>
+		<p><label style="margin:0;">重新输入：</label><input type="password"/></p>
+		<input type="button" value='注册'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value='取消'>
+	</div>	

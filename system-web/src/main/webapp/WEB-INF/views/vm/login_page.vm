@@ -2,8 +2,4 @@
 		<p>账号：<input type="text;"/></p>
 		<p>密码：<input type="password;"/></p>
 		<input type="button" value='提交'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value='取消'>
-	</div>	  <div style="margin:auto">
-	账号：<input type="text"/>
-	密码：<input type="password /">
-	<input type="button" value='提交'>
-</div>
+	</div>	

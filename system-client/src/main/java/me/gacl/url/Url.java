@@ -8,6 +8,8 @@ public interface Url {
 
 	public static final String USER_REGISTER = BaseUrl.USER + "/register";
 
+	public static final String USER_DOREGISTER = BaseUrl.USER + "/doRegister";
+	
 	public static class MustLogin{
 		
 		public static final String USER_DETAIL = BaseUrl.USER + "/detail";
