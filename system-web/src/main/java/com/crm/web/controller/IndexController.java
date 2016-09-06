@@ -16,6 +16,7 @@ import me.gacl.url.Url;
 
 @Controller
 public class IndexController {
+	
 	@Autowired
 	UserService userService;
 	@Autowired

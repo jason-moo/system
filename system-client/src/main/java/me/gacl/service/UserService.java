@@ -9,4 +9,5 @@ public interface UserService {
 	 boolean login(String phone,String passwd,HttpServletResponse response);
 	 
 	 boolean getCountByPhone(String phone);
+	 
 }

@@ -20,6 +20,8 @@ import me.gacl.utils.NumberUtils;
 
 @Service
 public class UserServiceImpl implements UserService{
+	private static final int a = 1;
+	
 	@Autowired
 	CUserMapper cUserMapper;
 	
