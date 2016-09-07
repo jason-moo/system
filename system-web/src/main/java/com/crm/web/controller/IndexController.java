@@ -31,6 +31,7 @@ public class IndexController {
 	
 	@RequestMapping(value = Url.USER_LOGIN_PAGE)
 	public String login(HttpServletRequest request){
+		
 		return "login_page";
 	}
 	
@@ -38,7 +39,6 @@ public class IndexController {
 	@ResponseBody
 	public Object doLogin(String phone,String passwd,HttpServletResponse response){
 		return userService.login(phone, passwd,response);
-		
 	}
 	
 	@RequestMapping(value = Url.USER_REGISTER)
