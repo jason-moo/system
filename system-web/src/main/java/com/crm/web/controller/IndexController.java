@@ -1,18 +1,16 @@
 package com.crm.web.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.support.atomic.RedisAtomicLong;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import me.gacl.exception.ServiceException;
 import me.gacl.service.SystemTempleService;
 import me.gacl.service.UserService;
 import me.gacl.url.Url;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class IndexController {
@@ -24,8 +22,6 @@ public class IndexController {
 	
 	@RequestMapping(value="/")
 	public String Index(){
-		RedisAtomicLong redisAtomicLong = new RedisAtomicLong("idgenerator",systemTempleService.getFactory());
-		System.out.println(redisAtomicLong.addAndGet(1));
 		return "index";
 	}
 	
