@@ -19,10 +19,10 @@
     </dependency>
   </dependencies>
   <modules>
+    <module>system-client</module>
     <module>system-domain</module>
     <module>system-dao</module>
     <module>system-service</module>
-    <module>system-client</module>
     <module>system-web</module>
   </modules>
 </project>
