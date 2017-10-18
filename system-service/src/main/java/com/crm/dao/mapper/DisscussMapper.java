@@ -1,9 +1,10 @@
 package com.crm.dao.mapper;
 
-import java.util.List;
 import me.gacl.domain.Disscuss;
 import me.gacl.domain.DisscussExample;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface DisscussMapper {
     /**
