@@ -27,7 +27,7 @@ public class IndexController {
 	
 	@RequestMapping(value = Url.USER_LOGIN_PAGE)
 	public String login(HttpServletRequest request){
-		
+		userService.insertUser("fdadsad","fdfdsfdsfds","gfdfdsfdsfsd");
 		return "login_page";
 	}
 	
