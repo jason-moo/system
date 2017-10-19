@@ -53,7 +53,7 @@
               <configuration>
                   <connectors>
                       <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-                          <port>80</port> <!-- 访问端口,默认8080 -->
+                          <port>8080</port> <!-- 访问端口,默认8080 -->
                       </connector>
                   </connectors>
                   <stopPort>9966</stopPort>

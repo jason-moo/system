@@ -60,12 +60,8 @@
 	<!-- 配置SqlSessionFactoryBean -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
-		<!-- mapper和resultmap配置路径 -->
-		<property name="mapperLocations">
-			<list>			
-				<value>classpath:com/crm/dao/mapper/*Mapper.xml</value>
-			</list>
-		</property>
+		<!-- 配置Mapper扫描路径（IDEA系列编辑器需要特别注意，因为IDEA的设置问题，src中的xml文件是不会被编译的，如果放在src中可能会报错，解决办法详见 常用问题-Invalid bound statement (not found) 错误如何解决?） -->
+		<property name="mapperLocations" value="classpath:com/crm/mapper/*Mapper.xml"/>
 	</bean>	
 	
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
