@@ -3,8 +3,11 @@ package com.crm.service;
 import me.gacl.service.SystemTempleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.connection.StringRedisConnection;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 @Service
 public class SystemTempleServiceImpl implements SystemTempleService {
@@ -21,6 +24,7 @@ public class SystemTempleServiceImpl implements SystemTempleService {
 			return null;
 		}
 	}
+
 
 	@Override
 	public Object set(Object key, Object value, long time) {

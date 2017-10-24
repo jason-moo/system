@@ -3,9 +3,11 @@ package com.crm.service;
 import com.crm.base.BaseJunit4Test;
 import com.crm.dao.mapper.CUserMapper;
 import me.gacl.domain.CUser;
+import me.gacl.service.SystemTempleService;
 import me.gacl.service.UserService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +20,9 @@ public class CUserServiceTest extends BaseJunit4Test{
 
     @Autowired
     CUserMapper cUserMapper;
+
+    @Autowired
+    SystemTempleService systemTempleService;
 
     @Test
     @Transactional
@@ -35,4 +40,12 @@ public class CUserServiceTest extends BaseJunit4Test{
         CUser cUser1 = cUserMapper.selectByPrimaryKey(6);
     }
 
+
+    @Test
+    @Transactional
+    @Rollback
+    public void testredis(){
+        systemTempleService.set("abc","hahhaha");
+        System.out.println(systemTempleService.get("abc").toString());
+    }
 }
