@@ -141,9 +141,9 @@
     </dependency>
     <!-- 导入dbcp的jar包，用来在applicationContext.xml中配置数据库 -->
     <dependency>
-      <groupId>c3p0</groupId>
-      <artifactId>c3p0</artifactId>
-      <version>0.9.1.2</version>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+      <version>1.1.4</version>
     </dependency>
     <!-- JSTL标签类 -->
     <dependency>
@@ -231,5 +231,6 @@
     <module>system-client</module>
     <module>system-service</module>
     <module>system-web</module>
+    <module>system-generator</module>
   </modules>
 </project>
