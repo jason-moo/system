@@ -7,16 +7,26 @@ import java.io.Serializable;
  */
 public class Code implements Serializable{
 
-    private Integer id;
+    private Long id;
 
     private String discountCode;
 
-    public Integer getId() {
+    private Integer status;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public String getDiscountCode() {

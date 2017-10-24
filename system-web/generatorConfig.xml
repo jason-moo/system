@@ -16,19 +16,19 @@
 		
 		<!-- java pojo文件生成目录，以及生产的类文件包名 -->
 		<javaModelGenerator targetPackage="me.gacl.domain"
-			targetProject="system-domain/src/main/java" >
+			targetProject="system-client/src/main/java" >
 			<property name="enableSubPackages" value="true" /> 
 			<property name="" value=""/>
 		</javaModelGenerator>
 	
 		<!-- mapper xml文件生成目录 -->
-		<sqlMapGenerator targetPackage="com.crm.dao.mapper" targetProject="system-dao/src/main/resources">
+		<sqlMapGenerator targetPackage="com.crm.mapper" targetProject="system-service/src/main/resources">
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
 		
 		<!-- Mapper接口文件生成目录 -->
 		<javaClientGenerator type="XMLMAPPER" 
-			targetPackage="com.crm.dao.mapper" targetProject="system-dao/src/main/java">
+			targetPackage="com.crm.dao.mapper" targetProject="system-service/src/main/java">
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 		
@@ -38,7 +38,7 @@
 		
     	<table schema="disscuss" tableName="disscuss">
 			<property name="useActualColumnNames" value="false" />
-			<property name="generateExt" value="false" />
+			<property name="generateExt" value="true" />
 			<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID() as id"  type="post" identity="true"/>
 		</table>
 		</context>

@@ -9,14 +9,25 @@
     -->
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="discount_code" jdbcType="VARCHAR" property="discountCode" />
+    <result column="status" javaType="INTEGER" property="status"/>
   </resultMap>
 
   <insert id="insert" useGeneratedKeys="true" keyColumn="id" parameterType="me.gacl.domain.Code">
-    INSERT INTO code(discount_code) VALUES (#{discountCode});
+    INSERT INTO code(discount_code,status) VALUES (#{discountCode},0);
   </insert>
 
   <select id="selectAllCode" resultMap="BaseResultMap">
     select * from code;
   </select>
 
+  <update id="batchUpdateStatus">
+    update
+      code
+    set
+      status = 1
+    WHERE discount_code IN
+    <foreach collection="codeList" item="code" open="(" separator="," close=")">
+      #{code}
+    </foreach>
+  </update>
 </mapper>

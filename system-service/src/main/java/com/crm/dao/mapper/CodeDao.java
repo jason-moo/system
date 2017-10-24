@@ -1,6 +1,7 @@
 package com.crm.dao.mapper;
 
 import me.gacl.domain.Code;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -12,5 +13,7 @@ public interface CodeDao {
     void insert(Code code);
 
     List<Code> selectAllCode();
+
+    Integer batchUpdateStatus(@Param("codeList") List<String> codeList);
 
 }
