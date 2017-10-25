@@ -3,6 +3,7 @@ package com.crm.service;
 import com.crm.base.BaseJunit4Test;
 import com.crm.dao.mapper.CodeDao;
 import me.gacl.domain.Code;
+import me.gacl.plugin.Page;
 import me.gacl.utils.RandomUtils;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +52,7 @@ public class RedisCodeTest extends BaseJunit4Test{
     public void getCode(){
         Set<String> allCode = redisTemplate.keys(codeKey+"*");
         if (allCode == null || allCode.size() == 0){
-            List<Code> codeList = codeDao.selectAllCode();
+            List<Code> codeList = codeDao.selectAllCode(new Page<>());
             if (!CollectionUtils.isEmpty(codeList)){
                 codeList.forEach(e -> e.setDiscountCode(codeKey+e.getDiscountCode()));
                 Map<String,Integer> map = codeList.stream().collect(Collectors.toMap(Code::getDiscountCode,code -> 0));
