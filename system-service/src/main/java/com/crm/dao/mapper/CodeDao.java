@@ -13,7 +13,9 @@ public interface CodeDao {
 
     void insert(Code code);
 
-    List<Code> selectAllCode(Page<Code> page);
+    List<Code> selectAllCode(@Param("id") int a,Page<Code> page);
+
+    List<Code> queryCode(Page page);
 
     Integer batchUpdateStatus(@Param("codeList") List<String> codeList);
 

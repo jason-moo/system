@@ -17,6 +17,10 @@
   </insert>
 
   <select id="selectAllCode" resultMap="BaseResultMap">
+    select * from code where id = #{id};
+  </select>
+
+  <select id="queryCode" resultMap="BaseResultMap">
     select * from code;
   </select>
 

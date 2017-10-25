@@ -5,8 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 import me.gacl.plugin.Page;
 import org.apache.ibatis.executor.statement.RoutingStatementHandler;
@@ -39,19 +38,31 @@ public class PageInterceptor implements Interceptor{
         //获取到当前StatementHandler的 boundSql，这里不管是调用handler.getBoundSql()还是直接调用delegate.getBoundSql()结果是一样的，因为之前已经说过了
         //RoutingStatementHandler实现的所有StatementHandler接口方法里面都是调用的delegate对应的方法。
         BoundSql boundSql = delegate.getBoundSql();
+        //通过反射获取delegate父类BaseStatementHandler的mappedStatement属性
+        MappedStatement mappedStatement = (MappedStatement)ReflectUtil.getFieldValue(delegate, "mappedStatement");
+        if (!mappedStatement.getId().contains("query")){
+            return invocation.proceed();
+        }
         //拿到当前绑定Sql的参数对象，就是我们在调用对应的Mapper映射语句时所传入的参数对象
         Object obj = boundSql.getParameterObject();
         //这里我们简单的通过传入的是Page对象就认定它是需要进行分页操作的。
-        if (obj instanceof Page<?>) {
-            Page<?> page = (Page<?>) obj;
-            //通过反射获取delegate父类BaseStatementHandler的mappedStatement属性
-            MappedStatement mappedStatement = (MappedStatement)ReflectUtil.getFieldValue(delegate, "mappedStatement");
-            //拦截到的prepare方法参数是一个Connection对象
-            Connection connection = (Connection)invocation.getArgs()[0];
-            //获取当前要执行的Sql语句，也就是我们直接在Mapper映射语句中写的Sql语句
+        if (obj != null){
             String sql = boundSql.getSql();
-            //获取分页Sql语句
-            String pageSql = this.getPageSql(page, sql);
+            String pageSql = "";
+            if (obj instanceof Page<?>) {
+                Page<?> page = (Page<?>) obj;
+                //拦截到的prepare方法参数是一个Connection对象
+                Connection connection = (Connection)invocation.getArgs()[0];
+                //获取分页Sql语句
+                pageSql = this.getPageSql(page, sql);
+            }else {
+                Map parameterMap = (Map)obj;
+                Set<String> keys = ((Map) obj).keySet();
+                Object key = keys.stream().filter(e->parameterMap.get(e) instanceof Page<?>).findFirst().get();
+                Page<?> page = (Page<?>) parameterMap.get(key.toString());
+                //获取当前要执行的Sql语句，也就是我们直接在Mapper映射语句中写的Sql语句
+                pageSql = this.getPageSql(page, sql);
+            }
             //利用反射设置当前BoundSql对应的sql属性为我们建立好的分页Sql语句
             ReflectUtil.setFieldValue(boundSql, "sql", pageSql);
         }
@@ -165,4 +176,5 @@ public class PageInterceptor implements Interceptor{
             }
         }
     }
+
 }

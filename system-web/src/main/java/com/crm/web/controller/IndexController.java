@@ -1,10 +1,15 @@
 package com.crm.web.controller;
 
+import com.crm.dao.mapper.CodeDao;
 import me.gacl.exception.ServiceException;
+import me.gacl.plugin.Page;
 import me.gacl.service.SystemTempleService;
 import me.gacl.service.UserService;
 import me.gacl.url.Url;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,20 +19,26 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class IndexController {
-	
+	private static final Logger logger = LogManager.getLogger("IndexController");
 	@Autowired
 	UserService userService;
 	@Autowired
 	SystemTempleService systemTempleService;
+	@Autowired
+	CodeDao codeDao;
 	
 	@RequestMapping(value="/")
 	public String Index(){
+		logger.info("dasfdsfasddfasdsasagdasdfasds");
+
 		return "index";
 	}
 	
 	@RequestMapping(value = Url.USER_LOGIN_PAGE)
 	public String login(HttpServletRequest request){
-		userService.insertUser("fdadsad","fdfdsfdsfds","gfdfdsfdsfsd");
+		logger.info("dasfdsfasddfasdsasagdasdfasds");
+		codeDao.selectAllCode(1,new Page<>());
+//		userService.insertUser("fdadsad","fdfdsfdsfds","gfdfdsfdsfsd");
 		return "login_page";
 	}
 	

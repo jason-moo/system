@@ -4,6 +4,7 @@ import com.crm.base.BaseJunit4Test;
 import com.crm.dao.mapper.CUserMapper;
 import com.crm.dao.mapper.CodeDao;
 import me.gacl.domain.CUser;
+import me.gacl.domain.Code;
 import me.gacl.plugin.Page;
 import me.gacl.service.SystemTempleService;
 import me.gacl.service.UserService;
@@ -50,7 +51,8 @@ public class CUserServiceTest extends BaseJunit4Test{
         Page page = new Page();
         page.setPageNo(1);
         page.setPageSize(10);
-        List<String> allcode  = codeDao.selectAllCode(page);
+        List<Code> allcode  = codeDao.selectAllCode(1,page);
+        List<Code> sda = codeDao.queryCode(new Page());
     }
 
 
