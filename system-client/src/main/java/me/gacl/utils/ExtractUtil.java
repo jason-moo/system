@@ -43,7 +43,8 @@ public class ExtractUtil {
             Field[] fields = superClass.getDeclaredFields();
             for (Field field : fields) {
                 try {
-                    result.put(field.getName(), (String) ReflectionUtil.invokeGetter(obj, field.getName()));
+                    result.put(field.getName(), (String) ReflectionUtil
+                            .invokeGetter(obj, field.getName()));
                 } catch (Exception e) {// NOSONAR
                     // Field不在当前类定义,继续向上转型
                     ClassUtil.makeAccessible(field);

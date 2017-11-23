@@ -6,6 +6,8 @@ import me.gacl.plugin.Page;
 import me.gacl.service.SystemTempleService;
 import me.gacl.service.UserService;
 import me.gacl.url.Url;
+import me.gacl.utils.FreeMarkers;
+import org.apache.commons.io.IOUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
 
 @Controller
 public class IndexController {
@@ -64,4 +69,5 @@ public class IndexController {
 		}
 		return userService.login(phone, passwd,response);
 	}
+
 }

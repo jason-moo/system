@@ -1,5 +1,7 @@
 package com.crm.web.interceptor;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,6 +10,8 @@ import java.sql.SQLException;
 import java.util.*;
 
 import me.gacl.plugin.Page;
+import me.gacl.utils.FreeMarkers;
+import org.apache.commons.io.IOUtils;
 import org.apache.ibatis.executor.statement.RoutingStatementHandler;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
@@ -176,5 +180,6 @@ public class PageInterceptor implements Interceptor{
             }
         }
     }
+
 
 }

@@ -20,7 +20,6 @@ public class SystemTempleServiceImpl implements SystemTempleService {
 	public Object set(Object key, Object value) {
 		try {
 			redisTemplate.opsForValue().set(key, value);
-			DispatcherServlet
 			return value;
 		} catch (Exception e) {
 			return null;

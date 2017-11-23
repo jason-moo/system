@@ -222,6 +222,11 @@
       <version>2.6.3</version>
     </dependency>
     <dependency>
+      <groupId>io.springside</groupId>
+      <artifactId>springside-utils</artifactId>
+      <version>5.0.0-RC1</version>
+    </dependency>
+    <dependency>
       <groupId>org.apache.poi</groupId>
       <artifactId>poi</artifactId>
       <version>3.7</version>

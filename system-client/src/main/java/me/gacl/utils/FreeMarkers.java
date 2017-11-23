@@ -2,13 +2,11 @@ package me.gacl.utils;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
+import org.apache.commons.io.IOUtils;
 import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.Resource;
-import org.springside.modules.utils.base.ExceptionUtil;
 
-import java.io.IOException;
-import java.io.StringReader;
-import java.io.StringWriter;
+import java.io.*;
 import java.util.Map;
 
 /**
@@ -27,8 +25,9 @@ public class FreeMarkers {
 			t.process(model, result);
 			return result.toString();
 		} catch (Exception e) {
-			throw ExceptionUtil.unchecked(e);
+			e.printStackTrace();
 		}
+		return null;
 	}
 
 	/**
@@ -40,8 +39,9 @@ public class FreeMarkers {
 			template.process(model, result);
 			return result.toString();
 		} catch (Exception e) {
-			throw ExceptionUtil.unchecked(e);
+			e.printStackTrace();
 		}
+		return null;
 	}
 
 	/**
@@ -52,5 +52,17 @@ public class FreeMarkers {
 		Resource path = new DefaultResourceLoader().getResource(directory);
 		cfg.setDirectoryForTemplateLoading(path.getFile());
 		return cfg;
+	}
+
+
+	public static void main(String[] args) {
+
+		try {
+			InputStream inputStream = FreeMarkers.class.getClassLoader().getResourceAsStream("jdbc.properties");
+			IOUtils.readLines(inputStream);
+		}catch (IOException e){
+			e.printStackTrace();
+		}
+
 	}
 }
