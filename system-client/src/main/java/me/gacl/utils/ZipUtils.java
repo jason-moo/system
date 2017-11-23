@@ -8,21 +8,18 @@ import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-import com.weidai.commons.util.StringUtils;
-
 public class ZipUtils {
 	
 	
 	  private static final int buffer = 2048;  
-	    
-	  
+
 	  
 	  public static  InputStream   getStreamByZip(String path,String fileName)throws Exception{
 		ZipFile zipFile = new ZipFile(path, Charset.forName("gbk"));
 		Enumeration<?> entries = zipFile.entries();
 		while (entries.hasMoreElements()) {
 			ZipEntry entry = (ZipEntry) entries.nextElement();
-			if (StringUtils.endsWithIgnoreCase(entry.getName(), fileName)) {
+			if (entry.getName().equals(fileName)) {
 				return zipFile.getInputStream(entry);
 			}
 		}
