@@ -221,6 +221,16 @@
       <artifactId>jackson-annotations</artifactId>
       <version>2.6.3</version>
     </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+      <version>3.7</version>
+    </dependency>
+    <dependency>
+      <groupId>org.freemarker</groupId>
+      <artifactId>freemarker</artifactId>
+      <version>2.3.23</version>
+    </dependency>
   </dependencies>
   <modules>
     <module>system-client</module>

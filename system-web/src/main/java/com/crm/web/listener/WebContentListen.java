@@ -11,7 +11,10 @@ public class WebContentListen extends ContextLoaderListener{
 	
 	 @Override
 	public void contextInitialized(ServletContextEvent event) {
+
 		super.contextInitialized(event);
+
 		BeanFactory.setWebApplicationContext(WebApplicationContextUtils.getWebApplicationContext(event.getServletContext()));
-	}
+
+	 }
 }

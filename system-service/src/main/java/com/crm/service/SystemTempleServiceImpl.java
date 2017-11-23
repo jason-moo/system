@@ -6,6 +6,7 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.StringRedisConnection;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.DispatcherServlet;
 
 import java.util.UUID;
 
@@ -19,6 +20,7 @@ public class SystemTempleServiceImpl implements SystemTempleService {
 	public Object set(Object key, Object value) {
 		try {
 			redisTemplate.opsForValue().set(key, value);
+			DispatcherServlet
 			return value;
 		} catch (Exception e) {
 			return null;

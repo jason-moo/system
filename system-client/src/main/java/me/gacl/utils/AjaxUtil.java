@@ -1,5 +1,6 @@
 package me.gacl.utils;
 
+
 import javax.servlet.http.HttpServletRequest;
 
 public class AjaxUtil {
@@ -11,4 +12,5 @@ public class AjaxUtil {
 	public static boolean isAjax(HttpServletRequest request){
 	    return  (request.getHeader("X-Requested-With") != null  && "XMLHttpRequest".equals( request.getHeader("X-Requested-With").toString())   ) ;
 	}
+
 }

@@ -40,7 +40,6 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public boolean login(String phone, String passwd,HttpServletResponse response) {
 		CUserExample cUserExample = new CUserExample();
-		cUserExample.createCriteria().andPhoneEqualTo(phone);
 		List<CUser> cUsers = cUserMapper.selectByExample(cUserExample);
 		if (!CollectionUtils.isEmpty(cUsers) && cUsers.size() == 1) {
 			CUser cUser = cUsers.get(0);

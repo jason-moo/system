@@ -30,6 +30,11 @@
   </profiles>
     <dependencies>
         <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.3.1</version>
+        </dependency>
+        <dependency>
             <groupId>me.gacl</groupId>
             <artifactId>system-service</artifactId>
             <version>${project.version}</version>
