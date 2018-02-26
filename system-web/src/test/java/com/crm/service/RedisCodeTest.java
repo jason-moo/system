@@ -38,9 +38,6 @@ public class RedisCodeTest extends BaseJunit4Test{
     @Autowired
     CodeDao codeDao;
 
-    @Autowired
-    TaskExecutor taskExecutor;
-
     @Test
     public void getDiscountCode(){
         for (int i = 0; i < 100; i++) {
@@ -50,6 +47,22 @@ public class RedisCodeTest extends BaseJunit4Test{
             codeDao.insert(code);
         }
     }
+
+    @Test
+    public void testmget(){
+        String[] keys = {"sadsads","fdsfsfd","ffgsdada"};
+        redisTemplate.execute(new RedisCallback() {
+            @Override
+            public Object doInRedis(RedisConnection redisConnection) throws DataAccessException {
+                StringRedisConnection stringRedisConnection =  (StringRedisConnection)redisConnection;
+                List<String> strings = stringRedisConnection.mGet(keys);
+                return null;
+            }
+        });
+
+
+    }
+
 
     @Test
     public void getCode(){
@@ -114,6 +127,44 @@ public class RedisCodeTest extends BaseJunit4Test{
             }
         }
     }
+
+    @Test
+    public void test(){
+        redisTemplate.execute(new RedisCallback() {
+            @Override
+            public Object doInRedis(RedisConnection redisConnection) throws DataAccessException {
+                StringRedisConnection stringRedisConnection = (StringRedisConnection)redisConnection;
+                stringRedisConnection.select(2);
+                List<String> keys = new ArrayList<>();
+                keys.add("qax");
+                keys.add("wsx");
+                keys.add("wsxddd");
+                String[] keyArray = new String[keys.size()];
+                keys.toArray(keyArray);
+                byte[][] ret = new byte[keys.size()][];
+                for (int i = 0; i < ret.length; i++) {
+                    ret[i] = keyArray[i].getBytes();
+                }
+                stringRedisConnection.watch(ret);
+                keys.parallelStream().forEach(key-> System.out.println(key));
+                stringRedisConnection.multi();
+                keys.stream().forEach(key ->{
+                    stringRedisConnection.setNX(key,"sdads");
+                });
+                List<Object> result = stringRedisConnection.exec();
+
+                stringRedisConnection.set("gfdfsfdadddd","");
+                String value1 = stringRedisConnection.get("gfdfsfdadddd");
+                System.out.println(value1);
+                return null;
+            }
+
+        });
+
+
+    }
+
+
 
     @Test
     public void delete(){

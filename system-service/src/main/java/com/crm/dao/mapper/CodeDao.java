@@ -19,4 +19,5 @@ public interface CodeDao {
 
     Integer batchUpdateStatus(@Param("codeList") List<String> codeList);
 
+    Integer updateStatus(@Param("id")Long id);
 }

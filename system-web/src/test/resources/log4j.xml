@@ -69,21 +69,16 @@
     <!--druid-stat-->
     <logger name="com.alibaba.druid" additivity="false">
         <level value="info"/>
-        <appender-ref ref="druid"/>
         <appender-ref ref="console"/>
     </logger>
     <!--druid-sql-->
     <logger name="druid.sql" additivity="false">
-        <level value="debug"/>
-        <appender-ref ref="druid"/>
+        <level value="info"/>
         <appender-ref ref="console"/>
     </logger>
 
     <root>
-        <priority value="debug"/>
-        <appender-ref ref="console"/>
-        <appender-ref ref="file-info"/>
-        <appender-ref ref="file-error"/>
+        <priority value="info"/>
     </root>
 
 </log4j:configuration>

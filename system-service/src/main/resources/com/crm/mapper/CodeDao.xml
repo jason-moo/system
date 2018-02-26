@@ -33,5 +33,15 @@
     <foreach collection="codeList" item="code" open="(" separator="," close=")">
       #{code}
     </foreach>
+    AND status = 0
+  </update>
+
+  <update id="updateStatus">
+    update
+    code
+    set
+    status = 1
+    WHERE  id =#{id}
+    AND status = 0
   </update>
 </mapper>
