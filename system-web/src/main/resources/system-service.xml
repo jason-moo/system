@@ -106,13 +106,13 @@ http://www.springframework.org/schema/data/elasticsearch/spring-elasticsearch-1.
 		<property name="propagationBehaviorName" value="PROPAGATION_REQUIRED"></property>
 	</bean>
 
-	<!--<elasticsearch:repositories base-package="me.gacl" />
+	<elasticsearch:repositories base-package="me.gacl" />
 
-	<elasticsearch:transport-client id="client" cluster-nodes="127.0.0.1:9300" cluster-name="ecoupon" />
+	<elasticsearch:transport-client id="client" cluster-nodes="127.0.0.1:9300" cluster-name="elasticsearch" />
 
 	<bean name="elasticsearchTemplate"
 		  class="org.springframework.data.elasticsearch.core.ElasticsearchTemplate">
 		<constructor-arg name="client" ref="client" />
 	</bean>
-	-->
+
 </beans>

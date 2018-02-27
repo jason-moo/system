@@ -92,6 +92,11 @@ http://www.springframework.org/schema/data/elasticsearch/spring-elasticsearch-1.
 			
 		</tx:attributes>
 	</tx:advice>
+	
+	<aop:config>  
+		<aop:pointcut expression="execution(public * com.crm.service..*.*(..))" id="serviceTxAdvice"/> 
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceTxAdvice"  /> 
+	</aop:config>
 
 	<bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
 		<property name="transactionManager" ref="transactionManager"></property>
@@ -101,18 +106,13 @@ http://www.springframework.org/schema/data/elasticsearch/spring-elasticsearch-1.
 		<property name="propagationBehaviorName" value="PROPAGATION_REQUIRED"></property>
 	</bean>
 
-	<aop:config>  
-		<aop:pointcut expression="execution(public * com.crm.service..*.*(..))" id="serviceTxAdvice"/> 
-		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceTxAdvice"  /> 
-	</aop:config>
-
 	<elasticsearch:repositories base-package="me.gacl" />
 
-	<elasticsearch:transport-client id="client" cluster-nodes="127.0.0.1:9300" cluster-name="ecoupon" />
+	<elasticsearch:transport-client id="client" cluster-nodes="127.0.0.1:9300" cluster-name="elasticsearch" />
 
 	<bean name="elasticsearchTemplate"
 		  class="org.springframework.data.elasticsearch.core.ElasticsearchTemplate">
 		<constructor-arg name="client" ref="client" />
 	</bean>
-	
+
 </beans>

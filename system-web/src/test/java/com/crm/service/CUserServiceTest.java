@@ -1,13 +1,10 @@
 package com.crm.service;
 
 import com.crm.base.BaseJunit4Test;
-import com.crm.dao.mapper.CUserMapper;
 import com.crm.dao.mapper.CodeDao;
 import me.gacl.domain.Code;
-import me.gacl.domain.ECouponInfoSearchDTO;
 import me.gacl.plugin.Page;
 import me.gacl.service.SystemTempleService;
-import me.gacl.service.UserService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
@@ -17,8 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.transaction.support.TransactionTemplate;
 
-import javax.swing.*;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -29,9 +24,6 @@ public class CUserServiceTest extends BaseJunit4Test{
 
     @Autowired
     CodeDao codeDao;
-
-    @Autowired
-    private ElasticsearchTemplate elasticsearchTemplate;
 
     @Autowired
     private TransactionTemplate transactionTemplate;
@@ -91,16 +83,6 @@ public class CUserServiceTest extends BaseJunit4Test{
                 return null;
             }
         });
-    }
-
-    @Test
-    public void testSearch(){
-//        elasticsearchTemplate.deleteIndex("ecoupon_info");
-//        elasticsearchTemplate.deleteIndex(CaseInfoES.class);
-        elasticsearchTemplate.createIndex(ECouponInfoSearchDTO.class);
-//        elasticsearchTemplate.putMapping(ECouponInfoSearchDTO.class);
-//        elasticsearchTemplate.refresh(ECouponInfoSearchDTO.class, true);
-
     }
 
 }
