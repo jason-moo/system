@@ -106,9 +106,10 @@ http://www.springframework.org/schema/data/elasticsearch/spring-elasticsearch-1.
 		<property name="propagationBehaviorName" value="PROPAGATION_REQUIRED"></property>
 	</bean>
 
-	<elasticsearch:repositories base-package="me.gacl" />
 
-	<elasticsearch:transport-client id="client" cluster-nodes="127.0.0.1:9300" cluster-name="elasticsearch" />
+	<elasticsearch:repositories base-package="me.gacl.repository"/>
+
+	<elasticsearch:transport-client id="client" cluster-nodes="127.0.0.1:9300" cluster-name="elasticsearch_xkeshi" />
 
 	<bean name="elasticsearchTemplate"
 		  class="org.springframework.data.elasticsearch.core.ElasticsearchTemplate">

@@ -1,6 +1,5 @@
 package com.crm.activemq;
 
-import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
 
@@ -9,26 +8,26 @@ import javax.jms.*;
  */
 public class Consumer1 {
 
-    public static void main(String[] args) throws Exception{
-        ConnectionFactory factory = new ActiveMQConnectionFactory("admin","admin","tcp://localhost:61616");
-        Connection connection = factory.createConnection();
-        connection.start();
-        Session session = connection.createSession(false,Session.AUTO_ACKNOWLEDGE);
-//        Destination destination = session.createQueue("text-msg");
-        Destination destination = session.createTopic("daa");
-        MessageConsumer consumer = session.createConsumer(destination);
-        consumer.setMessageListener(new MessageListener() {
-
-            @Override
-            public void onMessage(Message message){
-                try {
-                    TextMessage textMessage = (TextMessage)message;
-                    System.out.println(textMessage.getText());
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-            }
-
-        });
-    }
+//    public static void main(String[] args) throws Exception{
+//        ConnectionFactory factory = new ActiveMQConnectionFactory("admin","admin","tcp://localhost:61616");
+//        Connection connection = factory.createConnection();
+//        connection.start();
+//        Session session = connection.createSession(false,Session.AUTO_ACKNOWLEDGE);
+////        Destination destination = session.createQueue("text-msg");
+//        Destination destination = session.createTopic("daa");
+//        MessageConsumer consumer = session.createConsumer(destination);
+//        consumer.setMessageListener(new MessageListener() {
+//
+//            @Override
+//            public void onMessage(Message message){
+//                try {
+//                    TextMessage textMessage = (TextMessage)message;
+//                    System.out.println(textMessage.getText());
+//                }catch (Exception e){
+//                    e.printStackTrace();
+//                }
+//            }
+//
+//        });
+//    }
 }
