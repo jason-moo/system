@@ -32,7 +32,7 @@ public interface BinaryEncoder extends Encoder {
      * Encodes a byte array and return the encoded data
      * as a byte array.
      * 
-     * @param pArray Data to be encoded
+     * @param pArray me.gacl.utils.Data to be encoded
      *
      * @return A byte array containing the encoded data
      * 

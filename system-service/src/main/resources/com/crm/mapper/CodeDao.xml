@@ -24,6 +24,11 @@
     select * from code;
   </select>
 
+  <select id="selectById" resultMap="BaseResultMap">
+    select * from code WHERE id =#{id};
+  </select>
+
+
   <update id="batchUpdateStatus">
     update
       code

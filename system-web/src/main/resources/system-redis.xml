@@ -7,10 +7,7 @@
 
                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 	
-       <!-- 加载redis配置文件，可以后面用，为了简单我用得默认配置 -->  
-       <context:property-placeholder location="classpath:redis.properties"/>  
-  
-	  	<bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">  
+	  	<bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
 	        <property name="maxIdle" value="${redis.maxIdle}" />  
 	        <property name="maxTotal" value="100000" />  
 	        <property name="maxWaitMillis" value="${redis.maxWaitMillis}" />  

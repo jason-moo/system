@@ -1,7 +1,6 @@
 package com.crm.service;
 
 import me.gacl.domain.ECoupon;
-import me.gacl.repository.ECouponRepository;
 import me.gacl.service.ECouponSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;

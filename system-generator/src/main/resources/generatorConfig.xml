@@ -7,7 +7,7 @@
 		<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
 		<!-- 连接属性 -->
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://localhost:3306/ecoupon" userId="root" password="7356241">
+			connectionURL="jdbc:mysql://dev.mysql.xkeshi.so:3306/ticket?useUnicode=true" userId="user_developer" password="xkeshi_2015">
 		</jdbcConnection>
 		<javaTypeResolver>
 			<property name="forceBigDecimals" value="false" />
@@ -35,7 +35,7 @@
 		<!--  generateExt表示是否生成Ext类和ExtMapper  ， 一般在生成新表时让该字段为true ，以后都让其为false，避免覆盖 -->
 		<!--  如果表的id是自增长的，那么加上<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID() as id"  type="post" identity="true"/> 否则不用加 -->
 		
-    	<table schema="e_coupon" tableName="e_coupon">
+    	<table schema="ticket_user_activate" tableName="ticket_user_activate">
 			<property name="useActualColumnNames" value="false" />
 			<property name="generateExt" value="true" />
 			<generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID() as id"  type="post" identity="true"/>

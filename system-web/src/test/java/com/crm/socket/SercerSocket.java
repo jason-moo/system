@@ -1,6 +1,7 @@
 package com.crm.socket;
 
 import java.io.*;
+import java.net.DatagramSocket;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -10,7 +11,6 @@ import java.net.Socket;
 public class SercerSocket {
 
     public static void main(String[] args) throws Exception{
-
 //1、创建一个服务器端Socket，即ServerSocket，指定绑定的端口，并监听此端口
         ServerSocket serverSocket = new ServerSocket(10086);
 //2、调用accept()方法开始监听，等待客户端的连接
