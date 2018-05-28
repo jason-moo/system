@@ -26,7 +26,6 @@ public class FreeMakerToXML {
         configuration = new Configuration();
         configuration.setDefaultEncoding("UTF-8");
         configuration.setClassForTemplateLoading(FreeMakerToXML.class, "/");
-        //FTL文件所存在的位置，我的只能放在与java相同的包下
     }
 
 

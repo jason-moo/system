@@ -9,6 +9,8 @@ public class Data {
 
     private String convertColumn;
 
+    private String param;
+
     public String getNativeColumn() {
         return nativeColumn;
     }
@@ -23,5 +25,13 @@ public class Data {
 
     public void setConvertColumn(String convertColumn) {
         this.convertColumn = convertColumn;
+    }
+
+    public String getParam() {
+        return param;
+    }
+
+    public void setParam(String param) {
+        this.param = param;
     }
 }

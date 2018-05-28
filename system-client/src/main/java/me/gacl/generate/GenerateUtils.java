@@ -71,11 +71,11 @@ public class GenerateUtils {
             while(colRet.next()) {
                 Map<String, Object> dataMap = new HashMap();
                 String name = colRet.getString("TABLE_NAME");
-                String camelCase = underlineToCamel(name);
-                String className =convert(camelCase);
-                dataMap = getColumnsData(databaseMetaData, dataMap, name);
+                String camelCaseName = underlineToCamel(name);
+                String className =convert(camelCaseName);
+                dataMap = getColumnsData(databaseMetaData, dataMap, name,camelCaseName);
                 dataMap.put("tableName",name);
-                dataMap.put("dtoNameLow", camelCase + "Dto");
+                dataMap.put("dtoNameLow", camelCaseName + "Dto");
                 dataMap.put("entityName", className);
                 dataMap.put("entityType",packetagePojo+"."+className);
                 dataMap.put("dtoName", className +"Dto");
@@ -94,7 +94,7 @@ public class GenerateUtils {
         }
     }
 
-    private static Map<String, Object> getColumnsData(DatabaseMetaData databaseMetaData, Map<String, Object> dataMap, String name) throws SQLException {
+    private static Map<String, Object> getColumnsData(DatabaseMetaData databaseMetaData, Map<String, Object> dataMap, String name,String camelCase) throws SQLException {
         ResultSet columns = databaseMetaData.getColumns(null,"%",  name,"%");
         List<Data> dataList = new ArrayList<>();
         List<DataStrute> dataStruteList = new ArrayList<>();
@@ -104,6 +104,7 @@ public class GenerateUtils {
             data.setNativeColumn(column);
             String camelClonmn = underlineToCamel(column);
             data.setConvertColumn(camelClonmn);
+            data.setParam("#{"+camelCase+"Dto" +"."+ camelClonmn+"}");
             dataList.add(data);
 
             String columnType = columns.getString("TYPE_NAME");
