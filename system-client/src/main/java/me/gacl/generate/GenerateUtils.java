@@ -25,6 +25,9 @@ public class GenerateUtils {
 
     private static String packetagePojo = "com.xkeshi.entities";
 
+    private static String packetageService = "com.xkeshi.service";
+
+    private static String packetageServiceImpl = "com.xkeshi.service.impl";
 
     public static void main(String[] args) {
         getData(getConnection(),null);
@@ -77,17 +80,21 @@ public class GenerateUtils {
                 dataMap.put("tableName",name);
                 dataMap.put("dtoNameLow", camelCaseName + "Dto");
                 dataMap.put("entityName", className);
+                dataMap.put("camelCaseName",camelCaseName);
                 dataMap.put("entityType",packetagePojo+"."+className);
                 dataMap.put("dtoName", className +"Dto");
                 dataMap.put("dtoType",packetageDTO+"."+className +"Dto");
                 dataMap.put("packetageDTO",packetageDTO);
                 dataMap.put("packetageDAO",packetageDAO);
                 dataMap.put("packetagePojo",packetagePojo);
-
+                dataMap.put("packetageServiceImpl",packetageServiceImpl);
+                dataMap.put("packetageService",packetageService);
                 FreeMakerToXML.createWord(dataMap,"xml/"+className+"DAO.xml", FreeMakerToXML.xmlTempPath);
                 FreeMakerToXML.createWord(dataMap,"dao/"+className+"DAO.java", FreeMakerToXML.daoTempPath);
                 FreeMakerToXML.createWord(dataMap,"pojo/"+className+".java", FreeMakerToXML.pojoTempPath);
                 FreeMakerToXML.createWord(dataMap,"dto/"+className+"Dto.java", FreeMakerToXML.dtoTempPath);
+                FreeMakerToXML.createWord(dataMap,"service/"+className+"Service.java", FreeMakerToXML.serviceTempPath);
+                FreeMakerToXML.createWord(dataMap,"impl/"+className+"ServiceImpl.java", FreeMakerToXML.serviceImplTempPath);
             }
         }catch (SQLException e){
             e.getErrorCode();

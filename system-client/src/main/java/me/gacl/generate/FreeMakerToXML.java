@@ -22,6 +22,10 @@ public class FreeMakerToXML {
 
     public static final String dtoTempPath = "dtoTemp.ftl";
 
+    public static final String serviceTempPath = "serviceTemp.ftl";
+
+    public static final String serviceImplTempPath = "serviceImplTemp.ftl";
+
     static {
         configuration = new Configuration();
         configuration.setDefaultEncoding("UTF-8");
