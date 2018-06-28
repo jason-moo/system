@@ -35,6 +35,9 @@ public class FreeMakerToXML {
 
     public static void createWord(Map<String,Object> dataMap,String fileName,String templte){
         File outFile = new File("/Users/jason_moo/Downloads/helper/"+fileName);  //生成文件的路径
+        if (outFile.exists()){
+            outFile.delete();
+        }
         Writer out = null;
         try {
             out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outFile)));

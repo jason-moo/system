@@ -19,15 +19,15 @@ public class GenerateUtils {
 
     private static String passwd = "7356241";
 
-    private static String packetageDTO = "com.xkeshi.dto";
+    private static String packetageDTO = "com.xkeshi.wcoupon.dtos";
 
-    private static String packetageDAO = "com.xkeshi.dao";
+    private static String packetageDAO = "com.xkeshi.wcoupon.dao";
 
-    private static String packetagePojo = "com.xkeshi.entities";
+    private static String packetagePojo = "com.xkeshi.wcoupon.entities";
 
-    private static String packetageService = "com.xkeshi.service";
+    private static String packetageService = "com.xkeshi.wcoupon.services.localServices";
 
-    private static String packetageServiceImpl = "com.xkeshi.service.impl";
+    private static String packetageServiceImpl = "com.xkeshi.wcoupon.service.localImpl";
 
     public static void main(String[] args) {
         getData(getConnection(),null);
@@ -70,10 +70,11 @@ public class GenerateUtils {
         try {
             DatabaseMetaData databaseMetaData = conn.getMetaData();
             tableName = tableName != null ? tableName : "%";
-            ResultSet colRet = databaseMetaData.getTables(null,   "%",   tableName, new String[] {"TABLE"});
+            ResultSet colRet = databaseMetaData.getTables("test",   userName,   tableName, new String[] {"TABLE"});
             while(colRet.next()) {
                 Map<String, Object> dataMap = new HashMap();
                 String name = colRet.getString("TABLE_NAME");
+                System.out.println(name);
                 String camelCaseName = underlineToCamel(name);
                 String className =convert(camelCaseName);
                 dataMap = getColumnsData(databaseMetaData, dataMap, name,camelCaseName);
@@ -131,6 +132,7 @@ public class GenerateUtils {
         String convertType = null;
         switch (columnType){
             case "BIGINT" :
+            case "BIGINT UNSIGNED":
                 convertType = "Long";
                 break;
             case "VARCHAR":
@@ -140,7 +142,9 @@ public class GenerateUtils {
                 convertType = "Date";
                 break;
             case "TINYINT":
-            case "INT":
+            case "TINYINT UNSIGNED":
+            case "INT" :
+            case "INT UNSIGNED":
                 convertType = "Integer";
                 break;
             case "DECIMAL":

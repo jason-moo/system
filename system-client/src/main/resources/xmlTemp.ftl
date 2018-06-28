@@ -23,10 +23,10 @@
     </resultMap>
 
     <insert id="save" keyProperty="id" useGeneratedKeys="true" parameterType="${dtoType}">
-        insert into ${tableName} (coupon_discount_code, ticket_info_id,wristband_code,active_id,
-        created_time,deleted
+        insert into ${tableName} (
             <#list columnList as column>
                 <#if column_index = 0>
+                <#elseif column_index = 1>
                     ${column.nativeColumn}
                 <#else>
                     ,${column.nativeColumn}
@@ -36,9 +36,10 @@
         values (
             <#list columnList as column>
                 <#if column_index = 0>
-                    ${column.convertColumn}
+                <#elseif column_index = 1>
+                    ${column.convertColumn2}
                 <#else>
-                    ,${column.convertColumn}
+                    ,${column.convertColumn2}
                 </#if>
              </#list>
         )

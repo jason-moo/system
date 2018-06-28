@@ -4,10 +4,12 @@ package me.gacl.generate;
  * Created by jason_moo on 2018/5/24.
  */
 public class Data {
-    
+
     private String nativeColumn;
 
     private String convertColumn;
+
+    private String convertColumn2;
 
     private String param;
 
@@ -25,6 +27,7 @@ public class Data {
 
     public void setConvertColumn(String convertColumn) {
         this.convertColumn = convertColumn;
+        this.convertColumn2 = "#{" + convertColumn + "}";
     }
 
     public String getParam() {
@@ -34,4 +37,13 @@ public class Data {
     public void setParam(String param) {
         this.param = param;
     }
+
+    public String getConvertColumn2() {
+        return convertColumn2;
+    }
+
+    public void setConvertColumn2(String convertColumn2) {
+        this.convertColumn2 = convertColumn2;
+    }
+
 }

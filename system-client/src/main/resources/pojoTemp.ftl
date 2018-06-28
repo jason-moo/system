@@ -1,8 +1,9 @@
 package ${packetagePojo};
 
 import java.lang.*;
+import java.util.Date;
 
-public class TicketActiveRecord {
+public class ${entityName} {
 
 <#list dataStrutes as dataStrute>
 
@@ -14,7 +15,7 @@ public class TicketActiveRecord {
         return ${dataStrute.column};
     }
 
-    public void set${dataStrute.pColumn}(String ${dataStrute.column}) {
+    public void set${dataStrute.pColumn}(${dataStrute.type} ${dataStrute.column}) {
         this.${dataStrute.column} = ${dataStrute.column};
     }
 </#list>
